@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewModel.setHistoryTwoOperands():ViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Calcul.bracketOn ">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.historyLastLine">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.bracketString ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewModel.bracketOffPressed():ViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Calcul.secondNumber">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.firstNumber">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewModel.performMathOperation(operation:):ViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Calcul.secondNumber">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.firstNumber">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.pressedNumber(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "used">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.performMathOperation(operation:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "curInput">
+            </PersistentString>
+            <PersistentString
+               value = "secondNum">
+            </PersistentString>
+            <PersistentString
+               value = "firstNum">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewModel.numberPressed(value:):ViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "resultText.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.euqalPressed(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beforeBracket">
+            </PersistentString>
+            <PersistentString
+               value = "secondNum">
+            </PersistentString>
+            <PersistentString
+               value = "signBracket">
+            </PersistentString>
+            <PersistentString
+               value = "curInput">
+            </PersistentString>
+            <PersistentString
+               value = "curSign">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewModel.doAMath():ViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Calcul.signBracket">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.secondNumIsCurrentInput">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.firstNumber">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.curSign">
+            </PersistentString>
+            <PersistentString
+               value = "curInput">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.secondNumber">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.numberPressed(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "used">
+            </PersistentString>
+            <PersistentString
+               value = "curSign">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.secondNumIsCurrentInput">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.doAMath():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "firstNum">
+            </PersistentString>
+            <PersistentString
+               value = "secondNum">
+            </PersistentString>
+            <PersistentString
+               value = "curInput">
+            </PersistentString>
+            <PersistentString
+               value = "curSign">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.resultLabel.getter:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "resultLabel.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.mrPressed(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewModel.bracketOnPressed():ViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Calcul.signBracket ">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.bracketString">
+            </PersistentString>
+            <PersistentString
+               value = "Calcul.beforeBracket">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.bracketOffPressed(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beforeBracket">
+            </PersistentString>
+            <PersistentString
+               value = "firstNum">
+            </PersistentString>
+            <PersistentString
+               value = "secondNum">
+            </PersistentString>
+            <PersistentString
+               value = "resultLabel.text">
+            </PersistentString>
+            <PersistentString
+               value = "curInput">
+            </PersistentString>
+            <PersistentString
+               value = "curSign">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.curInput.setter:ViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
