@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Calcul {
+struct Calculator {
     static var firstNumber: Double = 0
     static var secondNumber: Double = 0
-    static var secondNumIsCurrentInput = false
+    static var secondNumberIsCurrentInput = false
     
     static var isDouble = false
     static var curSign = ""

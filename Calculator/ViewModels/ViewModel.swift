@@ -18,10 +18,10 @@ class ViewModel {
             var value : Double? = Double(resultText.value)
             if value == nil {
                 value = 0
-                Calcul.firstNumber = 0
-                Calcul.secondNumber = 0
-                Calcul.secondNumIsCurrentInput = false
-                Calcul.isDouble =  false
+                Calculator.firstNumber = 0
+                Calculator.secondNumber = 0
+                Calculator.secondNumberIsCurrentInput = false
+                Calculator.isDouble =  false
             }
             return value!
         }
@@ -30,7 +30,7 @@ class ViewModel {
             let doubleStr = String(format: "%.4f", newValue)
             let val = Double(doubleStr)!
             
-            if String(val).count > 15 || Calcul.maxDouble < val || Calcul.minDouble > val {
+            if String(val).count > 15 || Calculator.maxDouble < val || Calculator.minDouble > val {
                 resultText.value = "error"
             } else {
                 let isInteger = floor(val) == val
@@ -40,7 +40,7 @@ class ViewModel {
                     resultText.value = "\(val)"
                 }
             }
-            Calcul.secondNumIsCurrentInput = false
+            Calculator.secondNumberIsCurrentInput = false
         }
     }
     
@@ -55,25 +55,25 @@ class ViewModel {
     
     func numberPressed(value: String){
         let number = value
-        let curStr : String = Calcul.secondNumIsCurrentInput ? resultText.value : ""
+        let curStr : String = Calculator.secondNumberIsCurrentInput ? resultText.value : ""
         
         if (curStr.count) < 15 {
             resultText.value = curStr + number
         }
-        if !Calcul.secondNumIsCurrentInput {
-            Calcul.secondNumIsCurrentInput = true
+        if !Calculator.secondNumberIsCurrentInput {
+            Calculator.secondNumberIsCurrentInput = true
         }
     }
     
     func clearPressed() {
-        Calcul.firstNumber = 0
-        Calcul.secondNumber = 0
-        Calcul.curSign = ""
-        Calcul.secondNumIsCurrentInput = false
-        Calcul.isDouble =  false
-        Calcul.bracketOn = false
-        Calcul.bracketString = ""
-        Calcul.beforeBracket = 0
+        Calculator.firstNumber = 0
+        Calculator.secondNumber = 0
+        Calculator.curSign = ""
+        Calculator.secondNumberIsCurrentInput = false
+        Calculator.isDouble =  false
+        Calculator.bracketOn = false
+        Calculator.bracketString = ""
+        Calculator.beforeBracket = 0
         
         curInput = 0
         historyText.value = ""
@@ -81,13 +81,13 @@ class ViewModel {
     }
     
     func doAMath() {
-        if Calcul.secondNumIsCurrentInput {
-            Calcul.secondNumber = curInput
+        if Calculator.secondNumberIsCurrentInput {
+            Calculator.secondNumber = curInput
         }
         
-        Calcul.isDouble = false
+        Calculator.isDouble = false
         
-        switch Calcul.curSign {
+        switch Calculator.curSign {
         case "+" : performMathOperation{$0 + $1}
         case "-" : performMathOperation{$0 - $1}
         case "×" : performMathOperation{$0 * $1}
@@ -98,17 +98,17 @@ class ViewModel {
     }
     
     func performMathOperation(operation: (Double, Double) -> Double) {
-        curInput = operation(Calcul.firstNumber, Calcul.secondNumber)
-        Calcul.secondNumIsCurrentInput = false
+        curInput = operation(Calculator.firstNumber, Calculator.secondNumber)
+        Calculator.secondNumberIsCurrentInput = false
         
         setHistoryTwoOperands()
     }
     
     func clearTrigonometric(previousNumber: Double, curFunc: String) {
         numberPressed(value: String(curInput))
-        Calcul.curSign = ""
-        Calcul.firstNumber = curInput
-        Calcul.secondNumIsCurrentInput = false
+        Calculator.curSign = ""
+        Calculator.firstNumber = curInput
+        Calculator.secondNumberIsCurrentInput = false
         setHistoryOneOperand(previousNumber: previousNumber, curFunc: curFunc)
     }
     
@@ -144,16 +144,16 @@ class ViewModel {
             clearTrigonometric(previousNumber: previousNumber, curFunc: curFunc)
         case "eˣ" : curInput = exp(curInput)
             clearTrigonometric(previousNumber: previousNumber, curFunc: curFunc)
-        case "m+" : Calcul.mValue = curInput
-        case "m-" : Calcul.mValue = -curInput
-        case "mc" : Calcul.mValue = 0
-            curInput = Calcul.mValue
-            if !Calcul.secondNumIsCurrentInput {
-                Calcul.secondNumIsCurrentInput = true
+        case "m+" : Calculator.mValue = curInput
+        case "m-" : Calculator.mValue = -curInput
+        case "mc" : Calculator.mValue = 0
+            curInput = Calculator.mValue
+            if !Calculator.secondNumberIsCurrentInput {
+                Calculator.secondNumberIsCurrentInput = true
             }
-        case "mr" : curInput = Calcul.mValue
-            if !Calcul.secondNumIsCurrentInput {
-                Calcul.secondNumIsCurrentInput = true
+        case "mr" : curInput = Calculator.mValue
+            if !Calculator.secondNumberIsCurrentInput {
+                Calculator.secondNumberIsCurrentInput = true
             }
         default : break
         }
@@ -174,19 +174,19 @@ class ViewModel {
             
             let firstSymbol = historyText.value == "" ? "" : "\n"
             let currentString = curFunc + " \(previous) = \(resultText.value)"
-            if Calcul.bracketString != "" {
-                Calcul.bracketString += currentString
-            } else if currentString != Calcul.historyLastLine {
+            if Calculator.bracketString != "" {
+                Calculator.bracketString += currentString
+            } else if currentString != Calculator.historyLastLine {
                 historyText.value += firstSymbol + currentString
-                Calcul.historyLastLine = currentString
+                Calculator.historyLastLine = currentString
             }
         }
     }
     
     func setHistoryTwoOperands() {
         if resultText.value != "error" {
-            let firstNumStr = String(format: "%.4f", Calcul.firstNumber)
-            let secondNumStr = String(format: "%.4f", Calcul.secondNumber)
+            let firstNumStr = String(format: "%.4f", Calculator.firstNumber)
+            let secondNumStr = String(format: "%.4f", Calculator.secondNumber)
             let firstNum = Double(firstNumStr)!
             let secondNum = Double(secondNumStr)!
             var first = ""
@@ -206,62 +206,62 @@ class ViewModel {
             }
             
             let firstSymbol = historyText.value == "" ? "" : "\n"
-            let currentString = first + " \(Calcul.curSign) \(second) = \(resultText.value)"
+            let currentString = first + " \(Calculator.curSign) \(second) = \(resultText.value)"
             
-            if Calcul.bracketString != "" && Calcul.bracketOn  {
-                let lastChar = Calcul.bracketString.last!
+            if Calculator.bracketString != "" && Calculator.bracketOn  {
+                let lastChar = Calculator.bracketString.last!
                 if lastChar == "(" {
-                    Calcul.bracketString += first + " \(Calcul.curSign) \(second)"
+                    Calculator.bracketString += first + " \(Calculator.curSign) \(second)"
                 } else {
-                    Calcul.bracketString += " \(Calcul.curSign) \(second)"
+                    Calculator.bracketString += " \(Calculator.curSign) \(second)"
                 }
-            } else if Calcul.bracketString != "" && !Calcul.bracketOn {
-                let lastChar = Calcul.bracketString.last!
+            } else if Calculator.bracketString != "" && !Calculator.bracketOn {
+                let lastChar = Calculator.bracketString.last!
                 if lastChar == "(" {
-                    Calcul.bracketString += first + " \(Calcul.curSign) \(second)) = \(resultText.value)"
+                    Calculator.bracketString += first + " \(Calculator.curSign) \(second)) = \(resultText.value)"
                 } else {
-                    Calcul.bracketString += " \(Calcul.curSign) \(second)) = \(resultText.value)"
+                    Calculator.bracketString += " \(Calculator.curSign) \(second)) = \(resultText.value)"
                 }
-                historyText.value += firstSymbol + Calcul.bracketString
-                Calcul.historyLastLine = Calcul.bracketString
-                Calcul.bracketString = ""
-                Calcul.bracketOn = false
-            } else if currentString != Calcul.historyLastLine {
-                historyText.value += firstSymbol + Calcul.bracketString + currentString
-                Calcul.historyLastLine = Calcul.bracketString + currentString
+                historyText.value += firstSymbol + Calculator.bracketString
+                Calculator.historyLastLine = Calculator.bracketString
+                Calculator.bracketString = ""
+                Calculator.bracketOn = false
+            } else if currentString != Calculator.historyLastLine {
+                historyText.value += firstSymbol + Calculator.bracketString + currentString
+                Calculator.historyLastLine = Calculator.bracketString + currentString
             }
         }
     }
     
     func bracketOffPressed(){
-        if Calcul.bracketString != "" && Calcul.bracketOn {
-            Calcul.bracketOn = false
+        if Calculator.bracketString != "" && Calculator.bracketOn {
+            Calculator.bracketOn = false
             
             doAMath()
             
-            if Calcul.signBracket != "" {
-                Calcul.firstNumber = Calcul.beforeBracket
-                Calcul.curSign = Calcul.signBracket
-                Calcul.signBracket = ""
+            if Calculator.signBracket != "" {
+                Calculator.firstNumber = Calculator.beforeBracket
+                Calculator.curSign = Calculator.signBracket
+                Calculator.signBracket = ""
             } else {
-                Calcul.secondNumIsCurrentInput = false
-                Calcul.firstNumber = curInput
-                Calcul.secondNumber = 0
-                Calcul.curSign = ""
+                Calculator.secondNumberIsCurrentInput = false
+                Calculator.firstNumber = curInput
+                Calculator.secondNumber = 0
+                Calculator.curSign = ""
             }
         }
     }
     
     func bracketOnPressed(){
-        if !Calcul.bracketOn && Calcul.bracketString.isEmpty {
-            Calcul.bracketOn = true
-            Calcul.beforeBracket = curInput
-            Calcul.signBracket = Calcul.curSign
+        if !Calculator.bracketOn && Calculator.bracketString.isEmpty {
+            Calculator.bracketOn = true
+            Calculator.beforeBracket = curInput
+            Calculator.signBracket = Calculator.curSign
             
-            Calcul.bracketString = "("
+            Calculator.bracketString = "("
             
-            Calcul.firstNumber = 0
-            Calcul.curSign = ""
+            Calculator.firstNumber = 0
+            Calculator.curSign = ""
         }
     }
     
@@ -279,28 +279,28 @@ class ViewModel {
     }
     
     func dotPressed() {
-        if Calcul.secondNumIsCurrentInput && !Calcul.isDouble {
+        if Calculator.secondNumberIsCurrentInput && !Calculator.isDouble {
             resultText.value = resultText.value + "."
-            Calcul.isDouble = true
-        } else if !Calcul.secondNumIsCurrentInput && !Calcul.isDouble {
+            Calculator.isDouble = true
+        } else if !Calculator.secondNumberIsCurrentInput && !Calculator.isDouble {
             resultText.value = "0."
         }
     }
     
     func procentPressed() {
-        if Calcul.firstNumber == 0 {
+        if Calculator.firstNumber == 0 {
             curInput = curInput / 100
         } else {
-            Calcul.secondNumber = Calcul.firstNumber * curInput / 100
+            Calculator.secondNumber = Calculator.firstNumber * curInput / 100
         }
-        Calcul.secondNumIsCurrentInput = false
+        Calculator.secondNumberIsCurrentInput = false
     }
     
     func signPressed(curSign: String) {
-        Calcul.curSign = curSign
-        Calcul.firstNumber = curInput
-        Calcul.secondNumIsCurrentInput = false
-        Calcul.isDouble = false
+        Calculator.curSign = curSign
+        Calculator.firstNumber = curInput
+        Calculator.secondNumberIsCurrentInput = false
+        Calculator.isDouble = false
     }
 }
 
